@@ -104,6 +104,23 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'Who we are',
+          items: [
+            {
+              label: 'About Us',
+              to: '/about'
+            },
+            {
+              label: 'Community Guidelines',
+              to: '/community'
+            },
+            {
+              label: 'Privacy Policy',
+              to: '/privacy'
+            },
+          ]
+        }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Pod Arcade. Built with Docusaurus.`,
     },
