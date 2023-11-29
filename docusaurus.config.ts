@@ -44,12 +44,10 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-      } satisfies Preset.Options,
-      {
         googleTagManager: {
           containerId: 'GTM-TSHQKSS4'
         }
-      }
+      } satisfies Preset.Options,
     ],
   ],
 
