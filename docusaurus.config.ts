@@ -94,10 +94,10 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            // {
-            //   label: 'Discord',
-            //   href: 'https://discordapp.com/invite/TODO',
-            // },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/y8aasvEMy6',
+            },
             {
               label: 'Github',
               href: 'https://github.com/pod-arcade',
