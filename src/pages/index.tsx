@@ -11,16 +11,13 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <img className={styles.splash} src={require('../../static/img/pa.png').default} alt="logo" />
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
+        <img className={styles.splash} src={require('../../static/img/logo-stack.png').default} alt="logo" />
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Getting Started
+            Get Started
           </Link>
         </div>
       </div>

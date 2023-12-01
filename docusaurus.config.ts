@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Pod Arcade',
   tagline: 'Play Retro Games with your friends, directly in your browser!',
-  favicon: 'img/pa.png',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: 'https://www.pod-arcade.com',
@@ -59,10 +59,10 @@ const config: Config = {
     },
     // Replace with your project's social card
     navbar: {
-      title: 'Pod Arcade',
+      // title: 'Pod Arcade',
       logo: {
         alt: 'Pod Arcade Logo',
-        src: 'img/pa.png',
+        src: 'img/logo-full.png',
       },
       items: [
         {

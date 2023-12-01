@@ -8,8 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: #80B7AF;
-  color: #2E1D3C;
+  background: #311A34;
+  color: #F5EAD3;
 }
 
 @media screen and (max-width: 996px) {
@@ -26,4 +26,7 @@
 
 .splash {
   max-width: 600px;
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 3rem;
 }
