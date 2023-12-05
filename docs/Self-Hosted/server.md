@@ -2,24 +2,31 @@
 title: Setting up a Server
 sidebar_position: 0
 ---
+
 # Setting up a Server
 
-> :construction: ***PLEASE READ ME BEFORE GETTING STARTED*** :construction:
+> :construction: **_PLEASE READ ME BEFORE GETTING STARTED_** :construction:
 >
-> ***Pod-Arcade is currently in a dynamic phase of development. As we enhance and refine our platform, certain aspects of the deployment process may evolve. We appreciate your understanding and patience if you find that some instructions have changed, or are no longer up to date with the code. Please be sure to check back with this page before performing any updates. If you find something that no longer functions as it should, very kindly notify us on Discord.***
+> **_Pod-Arcade is currently in a dynamic phase of development. As we enhance and refine our platform, certain aspects of the deployment process may change or evolve. We appreciate your understanding and patience if you find that some instructions have changed, or are no longer up to date with the code. Please be sure to check back with this page before performing any updates. If you find something that no longer functions as it should, very kindly notify us on Discord._**
 
 ## Overview
 
-This document outlines the process to set up a Pod-Arcade server. This component is ***optional*** for users opting out of the Pod-Arcade cloud solution and is intended as the self-hosted alternative.
+This document guides you through the process of setting up a self-hosted Pod-Arcade server. This setup is an **_optional_** alternative for users choosing not to utilize the Pod-Arcade cloud solution.
 
 Key Components:
 
-- Web Interface: Accessible from a browser, bundled with the server.
-- MQTT Server: Facilitates communication between desktop and client, reachable via the `/mqtt` endpoint.
+- **Web Interface:** Bundled with the server and accessible from a browser.
+- **MQTT Server:** Enables communication between the desktop and client applications. It's accessible at the `/mqtt` endpoint and also via direct MQTT protocol for debugging purposes.
 
-The self-hosted server lacks some features of the cloud version, like diverse authentication methods (e.g., Discord). It uses a pre-shared key (PSK) for authentication.
+### Default Port Configuration
 
-You should be careful who you share these PSKs with. Anyone with the PSK can connect to your server.
+- **HTTP:** The server is accessible over port `8080` for HTTP connections.
+- **HTTPS:** For secure connections, HTTPS is available over port `8443`. By default, it generates a new self-signed certificate each time it starts. You may need to accept the self-signed certificate, or [swap it out](#additional-configuration-options).
+- **MQTT:** The MQTT service runs on port `1883`. This port is primarily for ease of debugging, as it publishes various operational statistics. This is the same as connecting to the `/mqtt` endpoint over HTTP or HTTPS.
+
+### Security Considerations
+
+The self-hosted server uses a pre-shared key (PSK) for authentication. This method is less sophisticated compared to the cloud version, which supports diverse authentication methods like Discord. Exercise caution in sharing these PSKs; anyone in possession of your PSK can gain access to your server.
 
 ## Helm
 
@@ -53,12 +60,13 @@ env:
 ingress:
   enabled: true
   className: "my-ingress-class"
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  hosts: 
+  hosts:
     - host: your.domain.com
-  tls: 
+  tls:
     - secretName: your-tls-secret
       hosts:
         - your.domain.com
@@ -99,7 +107,7 @@ In addition to the helm chart, we also have an example deployment using docker-c
 
 ## Pure Docker
 
-We don't recommend this, but you can also run the server using pure docker. 
+We don't recommend this, but you can also run the server using pure docker.
 
 ```bash title="shell"
 docker run -d --name pod-arcade-server \
@@ -113,3 +121,22 @@ docker run -d --name pod-arcade-server \
   -e SERVE_TLS="true" \
   ghcr.io/pod-arcade/server:main
 ```
+
+## Additional Configuration Options
+
+All configuration options are set via environment variables. The following table lists all available options. Note that some of these configuration options, such as `TLS_CERT` and `TLS_KEY`, may require you to mount additional volumes.
+If the server is set not to require authentication, you can leave the PSK fields blank.
+
+| Name             | Description                                                                                                                               | Default                                         |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `AUTH_REQUIRED`  | Enable authentication. If you set this to false, you can skip the PSK environment variables.                                              | `true`                                          |
+| `OIDC_SERVER`    | **NOT SUPPORTED** Sets the server used for OIDC.                                                                                          | `""`                                            |
+| `OIDC_CLIENT_ID` | **NOT SUPPORTED** Sets the client-id used for OIDC. This is used to verify the audience claim.                                            | `""`                                            |
+| `DESKTOP_PSK`    | Pre-shared key for desktop authentication.                                                                                                | `""`                                            |
+| `CLIENT_PSK`     | Pre-shared key for client (browser) connections.                                                                                          | `""`                                            |
+| `ICE_SERVERS`    | STUN server configuration for WebRTC. The browser will use this to find the best route to the desktop.                                    | `'[{"urls":["stun:stun.l.google.com:19302"]}]'` |
+| `SERVE_TLS`      | Enable TLS (HTTPS).                                                                                                                       | `false`                                         |
+| `TLS_CERT`       | Path to TLS certificate. This should be the entire chain, including any relevant intermediates or CAs.                                    | `"/certs/tls.crt"`                              |
+| `TLS_KEY`        | Path to TLS key.                                                                                                                          | `"/certs/tls.key"`                              |
+| `TLS_PORT`       | Port for the TLS server. Changing this port may break things.                                                                             | `8443`                                          |
+| `STUN_PORT`      | Port for the built-in STUN server. Setting this to -1 disables the STUN server. This is not usually necessary and will be discussed below | `-1`                                            |
