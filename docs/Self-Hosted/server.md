@@ -4,20 +4,22 @@ sidebar_position: 0
 ---
 # Setting up a Server
 
-> :construction: ***PLEASE READ ME*** :construction:
+> :construction: ***PLEASE READ ME BEFORE GETTING STARTED*** :construction:
 >
->  ***It's likely that these instructions are going to change. Pod-Arcade is still under very development, and our team has already identified things that need to change in the deployment process. Please be understanding if these instructions are no longer up to date.***
+> ***Pod-Arcade is currently in a dynamic phase of development. As we enhance and refine our platform, certain aspects of the deployment process may evolve. We appreciate your understanding and patience if you find that some instructions have changed, or are no longer up to date with the code. Please be sure to check back with this page before performing any updates. If you find something that no longer functions as it should, very kindly notify us on Discord.***
 
 ## Overview
 
-This guide covers the steps required to set up a Pod Arcade server.
+This document outlines the process to set up a Pod-Arcade server. This component is ***optional*** for users opting out of the Pod-Arcade cloud solution and is intended as the self-hosted alternative.
 
-This component is **_NOT REQUIRED_** if you're using the pod-arcade cloud solution. This is simply a drop-in replacement for the cloud solution for users that wish to run their own server. If you're looking for the cloud solution.
+Key Components:
 
-The Pod-Arcade server consists of two major components, the web interface that's accessible from the browser, and the MQTT server that relays messages between the desktop and client. The web-frontend is already bundled with the server, and is accessible at the root of the HTTP/HTTPS server. The MQTT server is accessible at the `/mqtt` endpoint of both the HTTP/HTTPS server.
+- Web Interface: Accessible from a browser, bundled with the server.
+- MQTT Server: Facilitates communication between desktop and client, reachable via the `/mqtt` endpoint.
 
-It is not as sophisticated as the cloud version, and does not contain alternative authentication methods, such as Discord. It only allows for using a pre-shared key. Be careful who you share your PSK with, as anyone with it can connect to your desktops.
+The self-hosted server lacks some features of the cloud version, like diverse authentication methods (e.g., Discord). It uses a pre-shared key (PSK) for authentication.
 
+You should be careful who you share these PSKs with. Anyone with the PSK can connect to your server.
 
 ## Helm
 
