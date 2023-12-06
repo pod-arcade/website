@@ -26,7 +26,7 @@ Key Components:
 
 ### Security Considerations
 
-The self-hosted server uses a pre-shared key (PSK) for authentication. This method is less sophisticated compared to the cloud version, which supports diverse authentication methods like Discord. Exercise caution in sharing these PSKs; anyone in possession of your PSK can gain access to your server.
+The self-hosted server uses a pre-shared key (PSK) for authentication. This method is less sophisticated compared to the cloud version, which supports diverse authentication methods like Discord. Exercise caution in sharing these PSKs; anyone in possession of your PSK can gain access to your servers and desktops.
 
 ## Helm
 
@@ -47,7 +47,7 @@ helm repo update
 
 By default, the pod-arcade chart doesn't install any ingress resources, nor configure node-ports. You'll need to configure the chart to expose the server in a way that's accessible to your users. Two example solutions are provided below.
 
-#### I have an ingress controller
+#### I have an ingress controller (recommended)
 
 ```yaml title="values-override.yaml"
 env:
