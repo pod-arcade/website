@@ -51,6 +51,15 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    require.resolve('docusaurus-lunr-search')
+  ],
+
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   themeConfig: {
     colorMode: {
       defaultMode: 'dark',
@@ -129,8 +138,8 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Pod Arcade. Built with Docusaurus.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.nightOwl,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ['bash','json']
     },
   } satisfies Preset.ThemeConfig,
 };
