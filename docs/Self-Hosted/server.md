@@ -28,13 +28,15 @@ Key Components:
 
 The self-hosted server uses a pre-shared key (PSK) for authentication. This method is less sophisticated compared to the cloud version, which supports diverse authentication methods like Discord. Exercise caution in sharing these PSKs; anyone in possession of your PSK can gain access to your servers and desktops.
 
-## Helm
+## Running The Server
+
+### Helm
 
 There's a pre-written helm chart that lives at [pod-arcade/charts](https://github.com/pod-arcade/charts). This is what we use to deploy Pod Arcade during development.
 
 If you have an ingress controller, you can configure it to generate an ingress for the server. Otherwise, you can use port-forwarding to access the server.
 
-### Step 1: Add the Pod-Arcade Helm Repository
+#### Step 1: Add the Pod-Arcade Helm Repository
 
 ```bash title="shell"
 # Add the Pod-Arcade Helm Repository
@@ -43,11 +45,11 @@ helm repo add pod-arcade https://charts.pod-arcade.com/
 helm repo update
 ```
 
-### Step 2: Configure the Pod-Arcade Helm Chart
+#### Step 2: Configure the Pod-Arcade Helm Chart
 
 By default, the pod-arcade chart doesn't install any ingress resources, nor configure node-ports. You'll need to configure the chart to expose the server in a way that's accessible to your users. Two example solutions are provided below.
 
-#### I have an ingress controller (recommended)
+##### I have an ingress controller (recommended)
 
 ```yaml title="values-override.yaml"
 env:
@@ -72,7 +74,7 @@ ingress:
         - your.domain.com
 ```
 
-#### I do not have an ingress controller
+##### I do not have an ingress controller
 
 If you don't have an ingress controller, you can run the server exposed through node ports or a load balancer.
 
@@ -94,18 +96,18 @@ service:
   mqttNodePort: 31883
 ```
 
-### Step 3: Install the Pod-Arcade Helm Chart
+#### Step 3: Install the Pod-Arcade Helm Chart
 
 ```bash title="shell"
 # Install the pod-arcade chart
 helm install pod-arcade-server pod-arcade/server -f values-override.yaml
 ```
 
-## Docker Compose
+### Docker Compose
 
 In addition to the helm chart, we also have an example deployment using docker-compose in [pod-arcade/example-apps](https://github.com/pod-arcade/example-apps) under apps/server.
 
-## Pure Docker
+### Pure Docker
 
 We don't recommend this, but you can also run the server using pure docker.
 
