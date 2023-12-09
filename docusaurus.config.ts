@@ -81,6 +81,10 @@ const config: Config = {
           label: 'Documentation',
         },
         {
+          label: 'Screenshots',
+          to: '/screenshots'
+        },
+        {
           href: 'https://github.com/pod-arcade/pod-arcade',
           position: 'right',
           className: 'header-github-link',
