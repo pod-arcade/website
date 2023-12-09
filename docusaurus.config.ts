@@ -102,6 +102,10 @@ const config: Config = {
               label: 'Github',
               href: 'https://github.com/pod-arcade',
             },
+            {
+              label: 'Patreon',
+              href: 'https://www.patreon.com/PodArcade',
+            }
           ],
         },
         {

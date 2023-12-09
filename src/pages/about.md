@@ -15,4 +15,4 @@ We both have over 10 years of professional experience in delivering web software
 - [Sway](https://github.com/swaywm/sway) - the best (and simplest) Wayland compositor
 - [Games on Whales](https://github.com/games-on-whales) - specifically [ABeltramo](https://github.com/ABeltramo) and [Drakulix](https://github.com/Drakulix) for their help with gamepad emulation and Wayland architecture guidance
 
-We're always looking for new contributors, so if you're interested in helping out, check out our code over on [Github](https://github.com/pod-arcade)!
+We're always looking for new contributors, so if you're interested in helping out, check out our code over on [Github](https://github.com/pod-arcade) and join our [Discord Community](https://discord.gg/y8aasvEMy6)!
