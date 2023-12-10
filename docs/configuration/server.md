@@ -43,7 +43,7 @@ The ICE servers configuration is a JSON string containing an array of objects, e
 
 - `username` _Optional_: If the object represents a TURN server, then this is the username to use during the authentication.
 
-See the [ICE Servers](peer-to-peer.md#ice-servers) section of the connection guide for more details and examples on running your own ICE servers.
+See the [ICE Servers](../design/peer-to-peer.md#ice-servers) section of the connection guide for more details and examples on running your own ICE servers.
 
 ## OpenID Connect
 The OpenID Connect configuration is used to authenticate the client using an external provider. The client will be redirected to the provider's login page and then redirected back to the client with an authorization code. The client will then exchange the authorization code for an id token and use that to authenticate with the server. The server will then validate the id token against the issuer to validate the connection.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3.9
+sidebar_position: 4.9
 ---
 
 # Peer-to-Peer Connection
@@ -16,7 +16,7 @@ STUN is an API used to obtain the IP address, port number, and connectivity stat
 
 ```mermaid
 sequenceDiagram
-  participant A as Client<br>Private IP: 192.168.0.10
+  participant A as Web Browser<br>Private IP: 192.168.0.10
   participant B as NAT/Router<br>Public IP: 100.1.0.20
   participant C as STUN Server<br>Public IP: 1.2.3.4
 
@@ -39,7 +39,7 @@ When a Client initiates a STUN request, it sends a Binding Request to the STUN s
 If your NAT/Router uses Symmetric NAT, it will require a different NAT entry for each destination IP address meaning a direct peer-to-peer connection will not be able to be established between two clients. In this case, you will need to use a TURN server.
 :::
 
-The Pod Arcade Server component includes a STUN server out of the box. If you are self hosting this component, consider not only port-forwarding the HTTP port, but also the STUN port. You can configure the STUN port using the `STUN_PORT` [environment variable](server.md#server-configuration).
+The Pod Arcade Server component includes a STUN server out of the box. If you are self hosting this component, consider not only port-forwarding the HTTP port, but also the STUN port. You can configure the STUN port using the `STUN_PORT` [environment variable](../configuration/server.md#server-configuration).
 
 If you want to instead use a public STUN server, you can use the following configuration or replace it with any other STUN server of your choice. https://gist.github.com/zziuni/3741933 has a currated list of free STUN servers.
 
@@ -60,7 +60,7 @@ graph TD;
   A & D <-. webrtc .-> C;
 ```
 
-The Pod Arcade Server component does not include a TURN server out of the box. You will need to run your own TURN server and configure it using the `ICE_SERVERS` [environment variable](server.md#server-configuration).
+The Pod Arcade Server component does not include a TURN server out of the box. You will need to run your own TURN server and configure it using the `ICE_SERVERS` [environment variable](../configuration/server.md#server-configuration).
 
 During development, the Pod Arcade team used [Stunner](https://github.com/l7mp/stunner), a Kubernetes native STUN/TURN server. With that you can configure a static username and password and then configure the Pod Arcade Server component to use it like so:
 
@@ -70,3 +70,23 @@ During development, the Pod Arcade team used [Stunner](https://github.com/l7mp/s
   {"urls":["turn:{{private_ip}}:3478?transport=udp","turn:{{public_ip}}:3478?transport=udp"],"username":"user-1","credential":"pass-1"}
 ]
 ```
+
+## Port Forwarding
+If none of the ICE methods work above, you will need to configure the Pod Arcade Desktop component with a static port number and then configure your router to forward that port to the Pod Arcade Desktop component. In this mode, all WebRTC connections will be established to a static port, allowing a direct peer-to-peer connection to be established.
+
+```mermaid
+graph LR;
+  A[Pod Arcade Desktop]
+  B[NAT/Router]
+  C[Web Browser]
+  C <-. webrtc .-> B;
+  B <-. webrtc .-> A;
+```
+
+You can configure the port number using the `WEBRTC_IPS` and `WEBRTC_PORT` [environment variables](../configuration/desktop.md#desktop-configuration). The `WEBRTC_IPS` variable should be set to the public IP address of your NAT/Router (and optionally the private IP address of the server the Desktop is running). The `WEBRTC_PORT` variable should be set to the port number you have port-forwarded through from your router.
+
+:::info
+The port number of the Pod Arcade Desktop component must be the same as the port number configured on your router in order for the configuration to work correctly.
+:::
+
+If you are running multiple Desktops in your network, you will need to configure each Desktop with a unique port number and configure your router to forward each port to the corresponding Desktop.

@@ -143,7 +143,8 @@ const config: Config = {
     },
     prism: {
       darkTheme: prismThemes.vsDark,
-      additionalLanguages: ['bash','json']
+      // https://prismjs.com/#supported-languages
+      additionalLanguages: ['bash','json','go']
     },
   } satisfies Preset.ThemeConfig,
 };

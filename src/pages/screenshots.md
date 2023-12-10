@@ -1,6 +1,6 @@
-# Pod-Arcade In Action
+# Pod Arcade In Action
 
-Screenshots were taken at various points throughout Pod-Arcade's development. They are not necessarily representative of the current state of the project.
+Screenshots were taken at various points throughout Pod Arcade's development. They are not necessarily representative of the current state of the project.
 
 ---
 ## Home Screen
