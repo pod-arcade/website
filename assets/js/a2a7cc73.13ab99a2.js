@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[8593],{8195:e=>{e.exports=JSON.parse('{"title":"Design","slug":"/category/design","permalink":"/docs/category/design","navigation":{"previous":{"title":"Kubernetes (Helm)","permalink":"/docs/getting-started/helm"},"next":{"title":"Streaming","permalink":"/docs/design/streaming"}}}')}}]);
