@@ -102,6 +102,14 @@ const config: Config = {
               label: 'Introduction',
               to: '/docs/intro',
             },
+            {
+              label: 'Configuration',
+              to: '/docs/category/configuration',
+            },
+            {
+              label: 'Design',
+              to: '/docs/category/design',
+            },
           ],
         },
         {
