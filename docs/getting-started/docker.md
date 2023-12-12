@@ -3,10 +3,65 @@ title: Docker
 description: Install Pod Arcade using Docker
 ---
 
-# Docker
+We offer a few different example configurations in the [pod-arcade/example-apps](https://github.com/pod-arcade/example-apps).
 
-Run the server component with this. You should be able to connect using https://localhost:8443. You may need to accept the self-signed certificate.
-If that doesn't work, you may need to generate your own certificate and key, add that to your trust store, mount it into the container, and set the `TLS_CERT` and `TLS_KEY` environment variables to the path you mounted them to. Alternatively, [chrome has a flag that will allow you to ignore invalid certificates on localhost](chrome://flags/#allow-insecure-localhost).
+For ease of use, many of these examples embed both the desktop program (yuzu, retroarch, etc.), and desktop image into one. These images have the `-aio` suffix on them.
+
+This is a perfectly valid way of running pod-arcade desktops, though the images can become quite large. This is in contrast to how we recommend running them with helm, where we have a separate image for both the application and the desktop images (which allows you to update the two images separately).
+
+It's also worth noting that we do not maintain or support these images in the same way that we do the desktop and server images. They're provided as a convenience and example of how you can build your own all-in-one desktop, but are not guaranteed to be up to date or function.
+
+## Docker Compose
+
+Below is an example of running the server and a desktop using docker-compose. You should be able to connect to it using https://localhost:8443. You may need to accept the self-signed certificate.
+
+### Server
+
+```yaml title="docker-compose.yaml"
+version: "3"
+
+services:
+  server:
+    image: ghcr.io/pod-arcade/server:main
+    restart: on-failure
+    ports:
+      - "8080:8080" # HTTP Web Port (likely won't work without a TLS LB in front)
+      - "8443:8443" # HTTPS Web Port (the one you should connect to)
+    privileged: true
+    environment:
+      CLIENT_PSK: passwordForClients
+      DESKTOP_PSK: magicPa$$wordForDesktops
+      ICE_SERVERS: '[{"urls":["stun:stun.l.google.com:19302"]}]'
+```
+
+### Desktop
+
+Below is an example pulled from the [pod-arcade/example-apps](https://github.com/pod-arcade/example-apps) repo for running an all-in-one desktop for the Yuzu emulator.
+
+```yaml title="docker-compose.yaml"
+version: "3"
+
+services:
+  yuzu:
+    image: ghcr.io/pod-arcade/example-yuzu-aio:main
+    restart: on-failure
+    privileged: true
+    environment:
+      - MQTT_HOST=ws://localhost:8080/mqtt
+      - DESKTOP_ID=yuzu-all-in-one
+      - DESKTOP_PSK=magicPa$$wordForDesktops
+      - RESOLUTION=1920x1080
+    volumes:
+      - /dev/dri:/host/dev/dri
+      - /dev/uinput:/host/dev/uinput
+      - yuzu-home-dir:/home/ubuntu
+volumes:
+  yuzu-home-dir:
+```
+
+## Pure Docker
+
+The following docker command should be enough to get the server up and running. You should then be able to connect using https://localhost:8443. 
 
 ```bash
 docker run -it --rm --name pa-server \
@@ -21,37 +76,29 @@ docker run -it --rm --name pa-server \
  ghcr.io/pod-arcade/server:main
 ```
 
-and run an example retroarch client with:
+and run an example yuzu all-in-one client with:
 
 ```bash
-docker volume create pa-desktop-dri
-docker run -it --rm --user 0 --privileged --link pa-server:pa-server \
-  -e WAYLAND_DISPLAY=wayland-1 \
-  -e MQTT_HOST="ws://pa-server:8080/mqtt" \
-  -e DESKTOP_ID=example-retroarch \
-  -e DESKTOP_PSK="theMagicStringUsedToAuthenticateDesktops" \
-  -e DISABLE_HW_ACCEL='false' \
-  -e DISPLAY=':0' \
-  -e DRI_DEVICE_MODE=MKNOD \
-  -e FFMPEG_HARDWARE='1' \
-  -e PGID='1000' \
-  -e PUID='1000' \
-  -e PULSE_SERVER='unix:/tmp/pulse/pulse-socket' \
-  -e UINPUT_DEVICE_MODE=NONE \
-  -e UNAME=ubuntu \
-  -e WLR_BACKENDS=headless \
-  -e WLR_NO_HARDWARE_CURSORS='1' \
-  -e WLR_RENDERER=gles2 \
-  -e XDG_RUNTIME_DIR=/tmp/sway \
-  -v /dev/dri:/dev/host-dri \
-  -v /dev/uinput:/dev/uinput \
-  -v pa-desktop-dri:/dev/dri \
- ghcr.io/pod-arcade/desktop:main
+docker volume create yuzu-home-dir
+
+docker run --restart on-failure --privileged \ 
+ -e MQTT_HOST=ws://localhost:8080/mqtt \ 
+ -e DESKTOP_ID=yuzu-all-in-one \ 
+ -e DESKTOP_PSK='magicPa$$wordForDesktops' \ 
+ -e RESOLUTION='1920x1080' \ 
+ -v ./home-dir:/home/ubuntu \ 
+ -v /dev/dri:/host/dev/dri \ 
+ -v /dev/uinput:/host/dev/uinput \ 
+ghcr.io/pod-arcade/example-yuzu-aio:main
+
 ```
 
-### Docker Compose
+## Troubleshooting
 
-There's docker-compose for running desktops in [pod-arcade/example-apps](https://github.com/pod-arcade/example-apps)
+#### I can't connect to the server
 
-You'll need to set some of the environment variables to have it connect to the Pod Arcade server. Just be careful which example applications you look at. Many of those pod-arcade/example-apps simply use the built in VNC server to stream the desktop to the browser, not Pod Arcade. That's because it's much faster to do development that way, and will be compatible with pod-arcade if the VNC approach works.
+Be sure you're connecting to the HTTPS port. You may need to accept the self-signed certificate. If that doesn't work, you may need to generate your own certificate and key. Check out the [server configuration](../configuration/server.md) for more details.
 
+#### The Desktop won't connect to the server
+
+  Ensure that the DESKTOP_PSK matches between the server and the desktop.
