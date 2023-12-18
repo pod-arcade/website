@@ -27,6 +27,23 @@ The information we collect is used exclusively for the following purposes:
 - To analyze trends and user behavior for product improvement.
 - To ensure the security and integrity of our website.
 
+## Use of play.pod-arcade.com and Data Sharing Consent
+
+By using the "play.pod-arcade.com" platform, you agree to the following terms regarding your personal information:
+
+### Email Address and Discord Account Information
+When you access "play.pod-arcade.com," you consent to share your email address and Discord account information with us.
+### Purpose of Data Collection
+The collection of this information is solely for enhancing your experience on our platform, providing support, and maintaining the integrity of our community.
+### Data Usage
+Your email and Discord information will be used to facilitate communication, provide updates, and offer support related to pod-arcade. We may also use this information to send you notifications regarding important changes or updates.
+### Data Protection and Privacy
+We are committed to protecting your personal information. Your data will be handled in accordance with our Privacy Policy, ensuring its confidentiality and security.
+### Opt-Out and Data Control
+You have the right to opt-out of data sharing at any time. If you choose to opt-out, please be aware that all features of "play.pod-arcade.com" may no longer be available to you. You can also request to view or delete your personal information held by us, in accordance with applicable data protection laws, by sending an email to [privacy@pod-arcade.com](mailto:privacy@pod-arcade.com).
+
+Please note that your continued use of "play.pod-arcade.com" constitutes your acceptance of these terms. If you do not agree with these terms, please refrain from using the platform.
+
 ## Data Protection
 
 We implement a variety of security measures to maintain the safety of your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure.

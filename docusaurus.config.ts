@@ -44,9 +44,9 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: {
+        gtag: process.env.CI === 'true' ? {
           trackingID: 'G-85GEH9BR44'
-        }
+        } : undefined,
       } satisfies Preset.Options,
     ],
   ],
