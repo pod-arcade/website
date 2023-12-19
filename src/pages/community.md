@@ -33,13 +33,13 @@ When conflicts arise, address them respectfully, seek common ground, and strive 
 ## Content and Discussions
 
 ### Relevant Topics
-Keep discussions relevant to the development, improvement, and use of pod-arcade.
+Keep discussions relevant to the development, improvement, and use of Pod Arcade.
 
 ### No Illegal Content
 Discussion, sharing, or promotion of how to obtain video game ROMs or any other illegal content is strictly prohibited.
 
 ### Legal Emulation Support
-While pod-arcade supports legal emulation of games, we do not endorse or support illegal activities related to game emulation.
+While Pod Arcade supports legal emulation of games, we do not endorse or support illegal activities related to game emulation.
 
 ## Contribution Guidelines
 

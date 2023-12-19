@@ -32,7 +32,7 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
@@ -40,6 +40,9 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/pod-arcade/website/tree/main',
+        },
+        blog: {
+          authorsMapPath: './authors.yaml',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -83,6 +86,17 @@ const config: Config = {
         {
           label: 'Screenshots',
           to: '/screenshots'
+        },
+        // {
+        //   label: 'Blog',
+        //   to: 'blog',
+        //   position: 'left',
+        // },
+        {
+          href: 'https://discord.gg/y8aasvEMy6',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord',
         },
         {
           href: 'https://github.com/pod-arcade/pod-arcade',
