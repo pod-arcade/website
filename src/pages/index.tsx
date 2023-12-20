@@ -17,7 +17,12 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Get Started
+            Read the Docs
+          </Link>
+          <Link
+            className="button button--primary button--lg"
+            to="https://play.pod-arcade.com">
+            Play Now
           </Link>
         </div>
       </div>

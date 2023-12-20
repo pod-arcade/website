@@ -19,6 +19,12 @@ The Pod Arcade desktop is a containerized application that runs on a virtual "de
 
 ### Desktop authentication
 
+#### play.pod-arcade.com
+| Environment Variable | Description                                                                                                                                                                                   | Default    |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `CLOUD_AUTH_KEY`     | If you are using https://play.pod-arcade.com, you will need to set this to the value provided in the installation instructions. If you are running your own server, you can leave this blank. | _disabled_ |            |
+
+#### Self-hosted
 | Environment Variable | Description                                                                                                                             | Default                |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `MQTT_HOST`          | A way of connecting to the MQTT Broker. Typically `ws://localhost:8080/mqtt` or `wss://your.domain.here:443/mqtt` for https deployments | `tcp://localhost:1883` |

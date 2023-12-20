@@ -103,7 +103,13 @@ const config: Config = {
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
-        }
+        },
+        {
+          label: 'Play Now',
+          className: 'header-cta',
+          to: 'https://play.pod-arcade.com',
+          position: 'right',
+        },
       ],
     },
     footer: {
