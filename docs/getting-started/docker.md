@@ -25,7 +25,7 @@ version: "3"
 
 services:
   server:
-    image: ghcr.io/pod-arcade/server:main
+    image: ghcr.io/pod-arcade/server:v1
     restart: on-failure
     networks: [pod-arcade]
     ports:
@@ -80,7 +80,7 @@ docker run -it --rm --name pa-server \
   -e ICE_SERVERS='[{"urls":["stun:stun.l.google.com:19302"]}]' \
   -e AUTH_REQUIRED="true" \
   -e SERVE_TLS="true" \
-  ghcr.io/pod-arcade/server:main
+  ghcr.io/pod-arcade/server:v1
 ```
 
 and run an example yuzu all-in-one client with:
