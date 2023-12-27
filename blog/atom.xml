@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.pod-arcade.com/blog</id>
+    <title>Pod Arcade Blog</title>
+    <updated>2023-12-27T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.pod-arcade.com/blog"/>
+    <subtitle>Pod Arcade Blog</subtitle>
+    <icon>https://www.pod-arcade.com/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Announcing Pod Arcade v1]]></title>
+        <id>https://www.pod-arcade.com/blog/announcing-v1</id>
+        <link href="https://www.pod-arcade.com/blog/announcing-v1"/>
+        <updated>2023-12-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We are excited to announce the very first major release of Pod Arcade, an open source project that enables you to stream retro games via RetroArch or other compatible software directly to your browser using WebRTC]]></summary>
+        <content type="html"><![CDATA[<p>We are excited to announce the very first major release of Pod Arcade, an open source project that enables you to stream retro games via RetroArch or other compatible software directly to your browser using WebRTC. This project has been more than 6 months in the making and we are excited to finally share it with the world.</p>
+<p><img loading="lazy" alt="Pod Arcade" src="https://www.pod-arcade.com/assets/images/announcing-v1-12f516ca0883590d961b19d9b309ec26.png" width="2000" height="1000" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-pod-arcade">What is Pod Arcade?<a href="https://www.pod-arcade.com/blog/announcing-v1#what-is-pod-arcade" class="hash-link" aria-label="Direct link to What is Pod Arcade?" title="Direct link to What is Pod Arcade?">​</a></h2>
+<p>Pod Arcade is a project that lets you play your favorite games over the internet with your friends. Fundamentally it lets you stream any game that can run on Wayland, through WebRTC to any browser using WebRTC. Pod Arcade handles the logistics around input emulation and video streaming, so you can focus on playing your favorite games with your friends. The entire system is completely open source and built off of open source technologies and has been released under the permissive MIT license. You can find the source code for the project over on <a href="https://github.com/pod-arcade/pod-arcade" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+<p>It is important to note that Pod Arcade is not a game emulator. It is a tool that lets you stream games that are running on your computer to your friends. You will need to provide your own games and emulators. We recommend using RetroArch, but any emulator that can run on Wayland should work. We have a couple of apps that we have tried Pod Arcade out with in our example-app repository: <a href="https://github.com/pod-arcade/example-apps" target="_blank" rel="noopener noreferrer">https://github.com/pod-arcade/example-apps</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="announcing-playpod-arcadecom">Announcing play.pod-arcade.com<a href="https://www.pod-arcade.com/blog/announcing-v1#announcing-playpod-arcadecom" class="hash-link" aria-label="Direct link to Announcing play.pod-arcade.com" title="Direct link to Announcing play.pod-arcade.com">​</a></h2>
+<p>Also as part of the v1 release, we are officially announcing <a href="https://play.pod-arcade.com/" target="_blank" rel="noopener noreferrer">https://play.pod-arcade.com</a>. This is our official hosted instance of the Pod Arcade server component. By using play.pod-arcade.com you can spend less time setting up your own server and more time playing games with your friends.</p>
+<p>This is a completely free service that we are offering to the community. We are currently running the server on limited hardware, so we ask that you please be patient with us as we work out any kinks in the system. We are also looking for volunteers to help us run more servers, so if you are interested in helping out, please reach out to us on <a href="https://discord.gg/y8aasvEMy6" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-get-started">How to get started<a href="https://www.pod-arcade.com/blog/announcing-v1#how-to-get-started" class="hash-link" aria-label="Direct link to How to get started" title="Direct link to How to get started">​</a></h2>
+<p>To get started using Pod Arcade, check out our <a href="https://www.pod-arcade.com/docs/intro/">Getting Started</a> guide. This will walk you through setting up the Pod Arcade server component and connecting to your first Pod Arcade Desktop.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-next">What's next?<a href="https://www.pod-arcade.com/blog/announcing-v1#whats-next" class="hash-link" aria-label="Direct link to What's next?" title="Direct link to What's next?">​</a></h2>
+<p>We're just getting started. We hope to hear your feedback about what you like and don't like about Pod Arcade. We have a couple ideas around some usability improvements to the Browser interface, and would really love to get this working on a Raspberry Pi environment. We are also looking for volunteers to try out different hardware and network configurations, so if you are interested in helping out, please hop on over to our <a href="https://discord.gg/y8aasvEMy6" target="_blank" rel="noopener noreferrer">Discord</a>. We are also looking for developers to help us improve the project. If you are interested in contributing, please check out our <a href="https://github.com/pod-arcade" target="_blank" rel="noopener noreferrer">GitHub</a> page. If you are familiar with Linux, Wayland, Golang, WebRTC or React, we'd love any help you can give.</p>
+<p>Finally, to close things out, we'd be remiss if we didn't thank the following projects for making Pod Arcade possible:</p>
+<ul>
+<li><a href="https://github.com/games-on-whales" target="_blank" rel="noopener noreferrer">Games on Whales</a> - specifically <a href="https://github.com/ABeltramo" target="_blank" rel="noopener noreferrer">ABeltramo</a> and <a href="https://github.com/Drakulix" target="_blank" rel="noopener noreferrer">Drakulix</a> for their help with gamepad emulation and Wayland architecture guidance</li>
+<li><a href="https://github.com/pion" target="_blank" rel="noopener noreferrer">Pion</a> - industry leading WebRTC library for Golang</li>
+<li><a href="https://github.com/swaywm/sway" target="_blank" rel="noopener noreferrer">Sway</a> - the best (and simplest) Wayland compositor</li>
+</ul>]]></content>
+        <author>
+            <name>tutman96</name>
+            <uri>https://github.com/tutman96</uri>
+        </author>
+        <author>
+            <name>JohnCMcDonough</name>
+            <uri>https://github.com/JohnCMcDonough</uri>
+        </author>
+        <category label="release" term="release"/>
+        <category label="v1" term="v1"/>
+    </entry>
+</feed>
