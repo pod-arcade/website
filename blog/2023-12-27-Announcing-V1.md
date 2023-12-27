@@ -6,7 +6,6 @@ tags: [release, v1]
 authors: [tutman96, JohnCMcDonough]
 image: ./img/announcing-v1.png
 hide_table_of_contents: false
-unlisted: true
 ---
 
 We are excited to announce the very first major release of Pod Arcade, an open source project that enables you to stream retro games via RetroArch or other compatible software directly to your browser using WebRTC. This project has been more than 6 months in the making and we are excited to finally share it with the world.
