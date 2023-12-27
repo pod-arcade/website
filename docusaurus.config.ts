@@ -87,11 +87,11 @@ const config: Config = {
           label: 'Screenshots',
           to: '/screenshots'
         },
-        // {
-        //   label: 'Blog',
-        //   to: 'blog',
-        //   position: 'left',
-        // },
+        {
+          label: 'Blog',
+          to: 'blog',
+          position: 'left',
+        },
         {
           href: 'https://discord.gg/y8aasvEMy6',
           position: 'right',
